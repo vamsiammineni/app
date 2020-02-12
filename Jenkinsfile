@@ -2,21 +2,20 @@ pipeline {
     agent any
     environment {
         REGISTRY = "vamsiammineni/wep-app"
-        REGISTRY_CREDENTIALS = ‘dockerhub’
         DOCKER_TAG = getDockerTag()
     }
     stages {
         stage('Build Docker Image') {
             steps{
                 script {
-                    docker.build REGISTRY + ":${DOCKER_TAG}"
+                    dockerImage = docker.build REGISTRY + ":${DOCKER_TAG}"
                 }
             }
         }
         stage('Deploy Image') {
             steps {
                 script {
-                    docker.withRegistry('', REGISTRY_CREDENTIALS){
+                    docker.withRegistry('https://hub.docker.com', '${dockerhub}'){
                         dockerImage.push()
                     }
                 }
