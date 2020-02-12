@@ -7,8 +7,9 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps{
+                echo 'Starting to build docker image'
                 script {
-                    def dockerImage = docker.build("vamsiammineni/wep-app:${DOCKER_TAG}", '.')
+                    def dockerImage = docker.build("vamsiammineni/wep-app:${env.BUILD_ID}")
                 }
             }
         }
