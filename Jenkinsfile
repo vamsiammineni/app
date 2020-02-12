@@ -8,7 +8,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                    def dockerImage = docker.build("vamsiammineni/wep-app:${DOCKER_TAG}")
+                    def dockerImage = docker.build("vamsiammineni/wep-app:${DOCKER_TAG}", '.')
                 }
             }
         }
