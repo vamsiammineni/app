@@ -6,6 +6,11 @@ pipeline {
         DOCKER_TAG = getDockerTag()
     }
     stages {
+        stage('Unit Tests'){
+            script {
+                echo "unit tests"
+            }
+        }
         stage('Build Docker Image') {
             steps{
                 echo 'Starting to build docker image'
