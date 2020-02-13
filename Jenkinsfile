@@ -10,7 +10,7 @@ pipeline {
             steps{
                 echo 'Starting to build docker image'
                 script {
-                    def dockerImage = docker.build("vamsiammineni/wep-app:${env.BUILD_ID}")
+                    dockerImage = docker.build("vamsiammineni/wep-app:${env.BUILD_ID}")
                 }
             }
         }
@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/vamsiammineni/', REGISTRYCREDS){
-                        ${dockerImage}.push()
+                        dockerImage.push()
                     }
                 }
             }
