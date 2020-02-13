@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/vamsiammineni/', REGISTRYCREDS){
-                        dockerImage.push()
+                        ${dockerImage}.push()
                     }
                 }
             }
