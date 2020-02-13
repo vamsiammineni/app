@@ -7,8 +7,10 @@ pipeline {
     }
     stages {
         stage('Unit Tests'){
-            script {
-                echo "unit tests"
+            steps {
+                script {
+                   echo "unit tests"
+                }
             }
         }
         stage('Build Docker Image') {
